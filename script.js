@@ -7,8 +7,13 @@ window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
 
     setTimeout(() => {
-
         loader.style.display = "none";
+
+        music.play().then(() => {
+            musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }).catch(err => {
+            console.log("Autoplay blocked by browser:", err);
+        });
 
     }, 1500);
 
@@ -120,43 +125,38 @@ const countdown = setInterval(()=>{
 // =====================================
 
 
-const music =
-document.getElementById("bgMusic");
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+const enterBtn = document.getElementById("enterBtn");
 
+music.volume = 0.5;
 
-const musicBtn =
-document.getElementById("musicBtn");
+enterBtn.addEventListener("click", function(){
 
+    music.play();
 
-let playing = false;
+    musicBtn.innerHTML =
+    '<i class="fa-solid fa-pause"></i>';
 
+});
 
+musicBtn.addEventListener("click", ()=>{
 
-musicBtn.addEventListener("click",()=>{
-
-
-    if(playing){
-
-        music.pause();
-
-        musicBtn.innerHTML =
-        '<i class="fa-solid fa-music"></i>';
-
-        playing=false;
-
-
-    }else{
-
+    if(music.paused){
 
         music.play();
 
         musicBtn.innerHTML =
         '<i class="fa-solid fa-pause"></i>';
 
-        playing=true;
+    }else{
+
+        music.pause();
+
+        musicBtn.innerHTML =
+        '<i class="fa-solid fa-music"></i>';
 
     }
-
 
 });
 
@@ -256,102 +256,62 @@ reveal();
 // Google Apps Script Web App URL
 
 const sheetURL =
-"https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+"https://script.google.com/macros/s/AKfycbwsuIkNAeIZvBO6Kn0DIa4b29xYv7j2ohFGrvp1yVNN7uo4ytt8gcPdu-x-mo16ahwfUA/exec";
+
+const form = document.getElementById("rsvpForm");
+
+if (form) {
+
+    form.addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        const submitBtn = form.querySelector("button[type='submit']");
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending...";
+
+        const data = {
+            name: document.getElementById("name").value,
+            attendance: document.getElementById("attendance").value,
+            guests: document.getElementById("guests").value,
+            message: document.getElementById("message").value
+        };
+
+        try {
+
+            await fetch(sheetURL, {
+                method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify(data)
+            });
+
+            Swal.fire({
+                icon: "success",
+                title: "RSVP Received ❤️",
+                text: "Thank you! Your RSVP has been successfully recorded.",
+                confirmButtonColor: "#c89b3c",
+                background: "#fffdf8"
+            });
+
+            form.reset();
+
+        } catch (error) {
+                console.error(error);
 
 
+            Swal.fire({
+                icon: "error",
+                title: "Oops!",
+                text: "Something went wrong. Please try again."
+            });
 
-const form =
-document.getElementById("rsvpForm");
+        }
 
-
-
-if(form){
-
-
-form.addEventListener("submit",
-function(e){
-
-
-    e.preventDefault();
-
-
-
-    const data = {
-
-
-        name:
-        document.getElementById("name").value,
-
-
-        attendance:
-        document.getElementById("attendance").value,
-
-
-        guests:
-        document.getElementById("guests").value,
-
-
-        meal:
-        document.getElementById("meal").value,
-
-
-        message:
-        document.getElementById("message").value
-
-
-    };
-
-
-
-    fetch(sheetURL,{
-
-        method:"POST",
-
-        mode:"no-cors",
-
-        headers:{
-
-            "Content-Type":
-            "application/json"
-
-        },
-
-        body:
-        JSON.stringify(data)
-
-    })
-
-
-
-    .then(()=>{
-
-
-        alert(
-        "Thank you ❤️ Your RSVP has been received!"
-        );
-
-
-        form.reset();
-
-
-    })
-
-
-
-    .catch(()=>{
-
-
-        alert(
-        "Something went wrong. Please try again."
-        );
-
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "Send RSVP";
 
     });
-
-
-
-});
-
 
 }
 
@@ -359,56 +319,4 @@ function(e){
 // WEDDING RSVP GOOGLE SHEET
 // =====================================
 
-
-function doPost(e) {
-
-
-  const sheet =
-  SpreadsheetApp
-  .getActiveSpreadsheet()
-  .getActiveSheet();
-
-
-
-  const data =
-  JSON.parse(e.postData.contents);
-
-
-
-  sheet.appendRow([
-
-
-    new Date(),
-
-
-    data.name,
-
-
-    data.attendance,
-
-
-    data.guests,
-
-
-    data.meal,
-
-
-    data.message
-
-
-  ]);
-
-
-
-  return ContentService
-  .createTextOutput(
-    "Success"
-  )
-
-  .setMimeType(
-    ContentService.MimeType.TEXT
-  );
-
-
-}
 

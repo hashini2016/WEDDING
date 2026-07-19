@@ -29,11 +29,13 @@
 
 <!-- Music Button -->
 
-<button id="musicBtn">
+<!-- Music Button -->
+<button id="musicBtn" title="Play / Pause Music">
     <i class="fa-solid fa-music"></i>
 </button>
 
-<audio id="bgMusic" loop>
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop preload="auto">
     <source src="music/wedding.mp3" type="audio/mpeg">
 </audio>
 
@@ -72,8 +74,13 @@ You are warmly invited
 9.30 AM to 4.00 PM
 </p>
 
-<a href="#countdown" class="btn">
+<a
+href="#countdown"
+class="btn"
+id="enterBtn">
+
 View Invitation
+
 </a>
 
 </div>
@@ -184,31 +191,34 @@ View Invitation
 
 <section class="venue">
 
-<h2>Venue</h2>
+    <h2>Venue</h2>
 
-<h3>Hotel Green Shadow</h3>
+    <h3>Hotel Green Shadow</h3>
 
-<p>
-We would be honoured by your presence
-on our special day.
-</p>
+    <p>
+        We would be honoured by your presence
+        on our special day.
+    </p>
 
-<iframe
-src="https://www.google.com/maps/embed?pb="
-loading="lazy">
-</iframe>
+    <a href="https://maps.app.goo.gl/QD6qyrNoFBMMxXJz5?g_st=aw" target="_blank">
 
-<br><br>
+        <img
+        src="https://srilankatravelandtourism.com/wp-content/uploads/2024/05/hikkaduwa-Location-Map-1024x521.jpg"
+        alt="Wedding Venue"
+        class="map-image">
 
-<a href="https://maps.google.com"
-target="_blank"
-class="btn">
+    </a>
 
-<i class="fa-solid fa-location-dot"></i>
+    <br><br>
 
-Open Google Maps
+    <a href="https://maps.app.goo.gl/QD6qyrNoFBMMxXJz5?g_st=aw"
+       target="_blank"
+       class="btn">
 
-</a>
+        <i class="fa-solid fa-location-dot"></i>
+        Open Google Maps
+
+    </a>
 
 </section>
 
@@ -297,7 +307,7 @@ Open Google Maps
 </footer>
 
 <script src="script.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </body>
