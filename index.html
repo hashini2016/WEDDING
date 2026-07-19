@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pasindu & Hashini Wedding</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Loading Screen -->
+
+<div id="loader">
+    <div class="loader-content">
+        <h1>Pasindu & Hashini</h1>
+        <p>Loading Invitation...</p>
+    </div>
+</div>
+
+<!-- Music Button -->
+
+<button id="musicBtn">
+    <i class="fa-solid fa-music"></i>
+</button>
+
+<audio id="bgMusic" loop>
+    <source src="music/wedding.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<img src="images/bride.png" class="bride" alt="Bride">
+
+<div class="center-content">
+
+<p class="welcome">
+Together With Our Families
+</p>
+
+<h1>
+Pasindu
+<span>&</span>
+Hashini
+</h1>
+
+<p id="guestName">
+Dear Guest,
+You are warmly invited
+</p>
+
+<p class="date">
+25 December 2026
+</p>
+
+<p class="time">
+10.30 AM
+</p>
+
+<a href="#countdown" class="btn">
+View Invitation
+</a>
+
+</div>
+
+<img src="images/groom.png" class="groom" alt="Groom">
+
+</div>
+
+</section>
+
+<!-- ===========================
+     GOLD DECORATION
+============================ -->
+
+<div class="divider">
+    <img src="images/divider.png" alt="Divider">
+</div>
+
+<!-- ===========================
+     COUNTDOWN
+============================ -->
+
+<section class="countdown" id="countdown">
+
+    <h2>Counting Down to Our Forever ❤️</h2>
+
+    <div class="count-box">
+
+        <div class="time-box">
+            <span id="days">00</span>
+            <p>Days</p>
+        </div>
+
+        <div class="time-box">
+            <span id="hours">00</span>
+            <p>Hours</p>
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <p>Minutes</p>
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <p>Seconds</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     LOVE QUOTE
+============================ -->
+
+<section class="quote">
+
+    <i class="fa-solid fa-heart"></i>
+
+    <h2>
+        Two souls,<br>
+        One heart,<br>
+        One beautiful forever.
+    </h2>
+
+</section>
+
+<!-- ===========================
+     CEREMONY
+============================ -->
+
+<section class="ceremony">
+
+<h2>Wedding Ceremony</h2>
+
+<div class="card">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+<h3>Date</h3>
+
+<p>25 December 2026</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-clock"></i>
+
+<h3>Time</h3>
+
+<p>10.30 AM</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-church"></i>
+
+<h3>Ceremony</h3>
+
+<p>Traditional Kandyan Poruwa Ceremony</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     VENUE
+============================ -->
+
+<section class="venue">
+
+<h2>Venue</h2>
+
+<h3>Hotel Name</h3>
+
+<p>
+We would be honoured by your presence
+on our special day.
+</p>
+
+<iframe
+src="https://www.google.com/maps/embed?pb="
+loading="lazy">
+</iframe>
+
+<br><br>
+
+<a href="https://maps.google.com"
+target="_blank"
+class="btn">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Open Google Maps
+
+</a>
+
+</section>
+
+<!-- ===========================
+     GALLERY
+============================ -->
+
+<section class="gallery">
+
+<h2>Our Memories</h2>
+
+<div class="gallery-grid">
+
+<img src="images/photo1.jpg">
+
+<img src="images/photo2.jpg">
+
+<img src="images/photo3.jpg">
+
+<img src="images/photo4.jpg">
+
+<img src="images/photo5.jpg">
+
+<img src="images/photo6.jpg">
+
+</div>
+
+</section>
+
+<!-- RSVP SECTION -->
+
+<section class="rsvp" id="rsvp">
+
+    <h2>RSVP</h2>
+    <p>Please let us know if you will celebrate with us.</p>
+
+    <form id="rsvpForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            required>
+
+        <select id="attendance" required>
+            <option value="">Will you attend?</option>
+            <option value="Yes">Yes, I'll be there ❤️</option>
+            <option value="No">Sorry, I can't attend</option>
+        </select>
+
+        <input
+            type="number"
+            id="guests"
+            placeholder="Number of Guests"
+            min="1"
+            value="1">
+
+        <select id="meal">
+            <option value="">Meal Preference</option>
+            <option>Vegetarian</option>
+            <option>Non-Vegetarian</option>
+        </select>
+
+        <textarea
+            id="message"
+            rows="5"
+            placeholder="Leave us a lovely message..."></textarea>
+
+        <button type="submit">
+            Submit RSVP
+        </button>
+
+    </form>
+
+</section>
+
+<!-- THANK YOU -->
+
+<section class="thanks">
+
+    <h2>Thank You</h2>
+
+    <p>
+        We can't wait to celebrate our
+        special day with you.
+    </p>
+
+    <h3>
+        ❤️ Pasindu & Hashini ❤️
+    </h3>
+
+</section>
+
+<footer>
+
+    Made with ❤️ for our Wedding
+
+</footer>
+
+<script src="script.js"></script>
+
+
+
+</body>
+</html>
